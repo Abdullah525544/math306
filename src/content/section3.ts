@@ -1,0 +1,325 @@
+import { Lesson } from '../types';
+
+export const SECTION_3_DATA: Lesson = {
+  id: 'section-3',
+  sectionId: 'section-3',
+  sectionNumber: 3,
+  title: 'Functions',
+  subtitle: 'Domain, range, the vertical line test, combinations, composition, piecewise, floor/ceiling, and symmetry.',
+  bookPages: 'Pages 17–26',
+  exerciseInfo: 'Exercises 3 (About 62 Questions)',
+  estimatedMinutes: 45,
+  learningGoals: [
+    'Define a function f: D → R as a deterministic rule assigning each x in domain D exactly one output y = f(x).',
+    'Apply the natural domain convention: (1) never divide by zero, and (2) never take an even root of a negative.',
+    'Test curves using the Vertical Line Test and understand why multi-crossing curves fail to be functions of x.',
+    'Form arithmetic combinations (f ± g, fg, f/g) and determine their domains via set intersection D(f) ∩ D(g).',
+    'Evaluate composite functions (f ∘ g)(x) = f(g(x)) and compute domain restrictions.',
+    'Identify even functions (mirror symmetry across y-axis) and odd functions (180° origin rotational symmetry).',
+    'Evaluate and graph piecewise functions, the greatest integer floor ⌊x⌋, and the least integer ceiling ⌈x⌉.',
+  ],
+  intuitiveAnalogy: {
+    title: 'The Single-Choice Vending Machine & The Shoe-Sock Pipeline',
+    text: 'A function is like a reliable snack machine: you press button B4, and you always get that exact snack. If button B4 could drop chips OR a soda, it would NOT be a function of the button! One input produces exactly one output. Function composition (f ∘ g) is like putting on socks (g), and then putting on shoes (f). If you try to reverse the order (putting on shoes first, then socks over shoes), you get a completely different, restricted result!',
+  },
+  explanationBlocks: [
+    {
+      heading: '1. Function Definition, Euler Notation & The Natural Domain',
+      body: 'A function $f$ from set $D$ to set $R$ is a rule that assigns a unique element $f(x) \\in R$ to each element $x \\in D$.\n• $x$ is the **independent variable** (input).\n• $y = f(x)$ is the **dependent variable** (output).\n\n**The Natural Domain Convention:** Unless explicitly stated otherwise, the domain of a formula is the largest set of real numbers for which the expression produces real numbers.\n\n**The Two Golden Domain Rules:**\n1. **Denominator Non-Zero:** Never divide by zero ($1/x$ requires $x \\neq 0$).\n2. **Radicand Non-Negative:** Never take an even root of a negative quantity ($\\sqrt{x}$ requires $x \\ge 0$).\n\n*Domain Restriction:* Artificially restricting the domain alters the range. For example, $y = x^2$ on $(-\\infty, \\infty)$ has range $[0, \\infty)$, but restricting $x \\ge 2$ restricts the range to $[4, \\infty)$.',
+      formulaLatex: 'y = f(x), \\quad x \\in D, \\; y \\in R \\quad\\mid\\quad D(1/x) = \\{x \\mid x \\neq 0\\}, \\; D(\\sqrt{x}) = [0, \\infty)',
+    },
+    {
+      heading: '2. The Vertical Line Test',
+      body: 'A curve in the coordinate plane is the graph of a function $y = f(x)$ if and only if **no vertical line intersects the curve at more than one point**.\n• A parabola $y = x^2$ passes because every vertical line cuts it at most once.\n• A circle $x^2 + y^2 = 9$ **fails** because any vertical line $x = c$ (with $-3 < c < 3$) intersects the circle at two points: $y = +\\sqrt{9 - c^2}$ and $y = -\\sqrt{9 - c^2}$. Thus a full circle is not a single function of $x$.',
+      formulaLatex: 'x = c \\implies \\text{At most 1 intersection with graph } y = f(x)',
+    },
+    {
+      heading: '3. Arithmetic Combinations & Composite Functions',
+      body: '• **Arithmetic Combinations:**\n  - $(f \\pm g)(x) = f(x) \\pm g(x)$, $(fg)(x) = f(x)g(x)$ on domain $D(f) \\cap D(g)$.\n  - $(f/g)(x) = f(x)/g(x)$ on domain $D(f) \\cap D(g)$ with all points where $g(x) = 0$ excluded.\n\n• **Composite Functions ($f \\circ g$):**\n  - $(f \\circ g)(x) = f(g(x))$.\n  - To evaluate, compute the inner function $g(x)$ first, then pass the result into the outer function $f$.\n  - **Domain Requirement:** $x$ must be in the domain of $g$, AND $g(x)$ must lie in the domain of $f$.\n  - In general, composition is non-commutative: $(f \\circ g)(x) \\neq (g \\circ f)(x)$.',
+      formulaLatex: '(f \\circ g)(x) = f(g(x)) \\quad\\mid\\quad D(f \\circ g) = \\{x \\in D(g) \\mid g(x) \\in D(f)\\}',
+    },
+    {
+      heading: '4. Symmetry: Even and Odd Functions',
+      body: '• **Even Functions (y-Axis Reflection Symmetry):**\n  $$f(-x) = f(x)$$\n  If $(x, y)$ is on the graph, so is $(-x, y)$. Examples: $f(x) = x^2, x^4, |x|, \\cos x$.\n\n• **Odd Functions (Origin Rotational Symmetry):**\n  $$f(-x) = -f(x)$$\n  If $(x, y)$ is on the graph, so is $(-x, -y)$. Rotating the graph by $180^\\circ$ leaves it identical. Examples: $f(x) = x, x^3, 1/x, \\sin x$.',
+      formulaLatex: '\\text{Even: } f(-x) = f(x) \\; (y\\text{-axis mirror}) \\quad\\mid\\quad \\text{Odd: } f(-x) = -f(x) \\; (180^\\circ\\text{ origin symmetry})',
+    },
+    {
+      heading: '5. Piecewise Functions, Floor ⌊x⌋ & Ceiling ⌈x⌉',
+      body: '• **Piecewise Functions:** Defined by distinct formulas on separated domain intervals.\n• **Greatest Integer (Floor) Function $\\lfloor x \\rfloor$:** The greatest integer less than or equal to $x$. Its graph consists of steps with solid left dots and hollow right dots, lying entirely on or below the line $y = x$.\n  $$\\lfloor 2.4 \\rfloor = 2, \\quad \\lfloor -0.3 \\rfloor = -1, \\quad \\lfloor -1.2 \\rfloor = -2$$\n• **Least Integer (Ceiling) Function $\\lceil x \\rceil$:** The smallest integer greater than or equal to $x$. Its steps lie entirely on or above the line $y = x$.\n  $$\\lceil 2.4 \\rceil = 3, \\quad \\lceil -0.3 \\rceil = 0, \\quad \\lceil -1.2 \\rceil = -1$$',
+      formulaLatex: '\\lfloor x \\rfloor \\le x \\le \\lceil x \\rceil \\quad\\mid\\quad \\lfloor -1.2 \\rfloor = -2, \\; \\lceil -1.2 \\rceil = -1',
+    },
+  ],
+  keyFormulas: [
+    {
+      title: 'Composition Rule',
+      latex: '(f \\circ g)(x) = f(g(x))',
+      description: 'Evaluate innermost function g first, then apply f to the resulting output.',
+      ruleOrName: 'Composite Function',
+    },
+    {
+      title: 'Even Function Symmetry',
+      latex: 'f(-x) = f(x)',
+      description: 'Mirror reflection symmetry across the vertical y-axis.',
+      ruleOrName: 'Even Symmetry',
+    },
+    {
+      title: 'Odd Function Symmetry',
+      latex: 'f(-x) = -f(x)',
+      description: '180-degree rotational point symmetry about the coordinate origin (0, 0).',
+      ruleOrName: 'Odd Symmetry',
+    },
+    {
+      title: 'Greatest Integer Floor Function',
+      latex: '\\lfloor x \\rfloor = \\max \\{n \\in \\mathbb{Z} \\mid n \\le x\\}',
+      description: 'Rounds down towards negative infinity. Crucial: floor of negative decimals rounds to next lower integer.',
+      ruleOrName: 'Floor Function',
+    },
+  ],
+  figures: [
+    {
+      id: 'fig-23-24',
+      figureNumber: 'Figures 23 & 24',
+      title: 'Figures 23 & 24: Function Mapping & The Machine Diagram (Page 18)',
+      bookPage: 'Page 18',
+      caption: 'Set mapping D → R and the physical machine model (Input x → Machine f → Output f(x)).',
+      description: 'Visual conceptualization of deterministic single-valued mappings.',
+    },
+    {
+      id: 'fig-25',
+      figureNumber: 'Figure 25',
+      title: 'Figure 25: Circle Failing the Vertical Line Test (Page 20)',
+      bookPage: 'Page 20',
+      caption: 'A circle x² + y² = a² is intersected twice by vertical line x = a/2.',
+      description: 'Visual demonstration of why full circles cannot be written as y = f(x).',
+    },
+    {
+      id: 'fig-26',
+      figureNumber: 'Figure 26',
+      title: 'Figure 26: Nine Useful Graphs Gallery (Page 21)',
+      bookPage: 'Page 21',
+      caption: 'Visual catalog of fundamental graphs: y = x, x², x³, √x, ∛x, 1/x, 1/x², mx, x^(2/3), x^(3/2).',
+      description: 'The foundation for graphing and transformation in pre-calculus.',
+    },
+    {
+      id: 'fig-27',
+      figureNumber: 'Figure 27',
+      title: 'Figure 27: Two-Stage Arrow Diagram for Composition (Page 23)',
+      bookPage: 'Page 23',
+      caption: 'Two-stage processing: input x → g(x) → f(g(x)).',
+      description: 'Illustrates domain chaining and output forwarding.',
+    },
+    {
+      id: 'fig-28',
+      figureNumber: 'Figure 28',
+      title: 'Figure 28: Even and Odd Symmetries (Page 23)',
+      bookPage: 'Page 23',
+      caption: '(a) Even mirror symmetry across y-axis vs (b) Odd origin rotation symmetry.',
+      description: 'Geometric identification of function symmetries.',
+    },
+    {
+      id: 'fig-29-32',
+      figureNumber: 'Figures 29–32',
+      title: 'Figures 29–32: |x|, Piecewise & Step Functions (Page 24)',
+      bookPage: 'Page 24',
+      caption: 'V-shaped |x|, 3-part piecewise curve, and step graphs for ⌊x⌋ and ⌈x⌉.',
+      description: 'Illustrates jump discontinuities and step function geometry.',
+    },
+  ],
+  workedExamples: [
+    {
+      id: 'sec3-ex1',
+      prompt: 'Example 1: Express the volume V of a sphere as a function of its radius r.',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'Recall the geometric volume formula for a spherical solid.',
+          expressionLatex: 'V = \\frac{4}{3}\\pi r^3',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'State domain based on physical reality: radius r must be non-negative.',
+          expressionLatex: 'V(r) = \\frac{4}{3}\\pi r^3, \\quad r \\in [0, \\infty)',
+        },
+      ],
+      finalAnswer: 'V(r) = (4/3)pi r³ on [0, inf)',
+      finalAnswerLatex: 'V(r) = \\frac{4}{3}\\pi r^3, \\quad r \\ge 0',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 1, Page 18',
+    },
+    {
+      id: 'sec3-ex2',
+      prompt: 'Example 2: Let F(t) = 2/(t - 1) + 3. Evaluate F(3) and F(1 + x).',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'Substitute t = 3 into the formula.',
+          expressionLatex: 'F(3) = \\frac{2}{3 - 1} + 3 = \\frac{2}{2} + 3 = 1 + 3 = 4',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'Substitute t = 1 + x into the formula.',
+          expressionLatex: 'F(1 + x) = \\frac{2}{(1 + x) - 1} + 3 = \\frac{2}{x} + 3 \\quad (x \\neq 0)',
+        },
+      ],
+      finalAnswer: 'F(3) = 4, F(1 + x) = 2/x + 3',
+      finalAnswerLatex: 'F(3) = 4, \\quad F(1 + x) = \\frac{2}{x} + 3',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 2, Page 18',
+    },
+    {
+      id: 'sec3-ex3',
+      prompt: 'Example 3: Find the domain and range of y = √(4 - x) and y = √(1 - x²).',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'For y = √(4 - x), radicand must be non-negative: 4 - x >= 0 => x <= 4. Domain is (-inf, 4].',
+          expressionLatex: '4 - x \\ge 0 \\implies x \\le 4 \\implies \\text{Domain: } (-\\infty, 4], \\quad \\text{Range: } [0, \\infty)',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'For y = √(1 - x²), 1 - x² >= 0 => x² <= 1 => -1 <= x <= 1. Upper semicircle has max height 1 at x = 0.',
+          expressionLatex: '1 - x^2 \\ge 0 \\implies -1 \\le x \\le 1 \\implies \\text{Domain: } [-1, 1], \\quad \\text{Range: } [0, 1]',
+        },
+      ],
+      finalAnswer: '√(4-x): D=(-inf, 4], R=[0, inf); √(1-x²): D=[-1, 1], R=[0, 1]',
+      finalAnswerLatex: '\\text{Domain } [-1, 1], \\quad \\text{Range } [0, 1]',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 3, Page 19',
+    },
+    {
+      id: 'sec3-ex4',
+      prompt: 'Example 4: Graph the function y = x² over the interval [-2, 2].',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'Make a table of (x, y) coordinates: (-2, 4), (-1, 1), (0, 0), (1, 1), (2, 4).',
+          expressionLatex: 'x \\in \\{-2, -1, 0, 1, 2\\} \\implies y = x^2 \\in \\{4, 1, 0, 1, 4\\}',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'Plot the points and connect with a smooth parabolic curve opening upward through origin.',
+          expressionLatex: '(-2, 4), \\; (-1, 1), \\; (0, 0), \\; (1, 1), \\; (2, 4)',
+        },
+      ],
+      finalAnswer: 'Parabola opening upward with vertex at (0, 0)',
+      finalAnswerLatex: 'y = x^2, \\quad \\text{Domain: } [-2, 2], \\quad \\text{Range: } [0, 4]',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 4, Page 20',
+    },
+    {
+      id: 'sec3-ex7',
+      prompt: 'Example 7: Graph the piecewise function y = -x for x < 0; y = x² for 0 <= x <= 1; y = 1 for x > 1.',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'For x < 0, plot the line y = -x ending at (0, 0) with a hollow circle.',
+          expressionLatex: 'y = -x \\quad (x < 0)',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'For 0 <= x <= 1, plot the parabolic arc from (0, 0) to (1, 1), filling the dot at (0, 0).',
+          expressionLatex: 'y = x^2 \\quad (0 \\le x \\le 1)',
+        },
+        {
+          stepNumber: 3,
+          explanation: 'For x > 1, plot the horizontal ray y = 1 heading rightward indefinitely.',
+          expressionLatex: 'y = 1 \\quad (x > 1)',
+        },
+      ],
+      finalAnswer: 'Continuous 3-branch piecewise curve',
+      finalAnswerLatex: 'f(x) = \\begin{cases} -x, & x < 0 \\\\ x^2, & 0 \\le x \\le 1 \\\\ 1, & x > 1 \\end{cases}',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 7, Page 24',
+    },
+    {
+      id: 'sec3-ex5',
+      prompt: 'Example 5: Let f(x) = √x and g(x) = √(1 - x). Find f + g, fg, and f/g and their domains.',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'Determine individual domains: D(f) = [0, inf) and D(g) = (-inf, 1].',
+          expressionLatex: 'D(f) = [0, \\infty), \\quad D(g) = (-\\infty, 1]',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'Intersect domains: D(f) ∩ D(g) = [0, 1].',
+          expressionLatex: 'D(f) \\cap D(g) = [0, \\infty) \\cap (-\\infty, 1] = [0, 1]',
+        },
+        {
+          stepNumber: 3,
+          explanation: 'Form f + g and fg on [0, 1].',
+          expressionLatex: '(f + g)(x) = \\sqrt{x} + \\sqrt{1 - x}, \\quad (fg)(x) = \\sqrt{x(1 - x)} = \\sqrt{x - x^2}',
+        },
+        {
+          stepNumber: 4,
+          explanation: 'For f/g, exclude g(x) = 0 (where x = 1). Domain is half-open [0, 1).',
+          expressionLatex: '\\left(\\frac{f}{g}\\right)(x) = \\frac{\\sqrt{x}}{\\sqrt{1 - x}} = \\sqrt{\\frac{x}{1 - x}} \\quad\\text{on } [0, 1)',
+        },
+      ],
+      finalAnswer: '(f+g) on [0,1], (f/g) on [0,1)',
+      finalAnswerLatex: '(f + g) \\text{ on } [0, 1], \\quad (f/g) \\text{ on } [0, 1)',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 5, Page 22',
+    },
+    {
+      id: 'sec3-ex6',
+      prompt: 'Example 6: Let f(x) = √x and g(x) = x + 1. Form (f ∘ g)(x) and (g ∘ f)(x) and specify domains.',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: '(f ∘ g)(x) = f(g(x)) = f(x + 1) = √(x + 1). Domain requires x + 1 >= 0 => x >= -1.',
+          expressionLatex: '(f \\circ g)(x) = \\sqrt{x + 1}, \\quad D(f \\circ g) = [-1, \\infty)',
+        },
+        {
+          stepNumber: 2,
+          explanation: '(g ∘ f)(x) = g(f(x)) = g(√x) = √x + 1. Domain requires x in D(f) => x >= 0.',
+          expressionLatex: '(g \\circ f)(x) = \\sqrt{x} + 1, \\quad D(g \\circ f) = [0, \\infty)',
+        },
+      ],
+      finalAnswer: '(f o g)(x)=√(x+1) on [-1, inf); (g o f)(x)=√x + 1 on [0, inf)',
+      finalAnswerLatex: '(f \\circ g)(x) = \\sqrt{x + 1} \\text{ on } [-1, \\infty); \\quad (g \\circ f)(x) = \\sqrt{x} + 1 \\text{ on } [0, \\infty)',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Example 6, Page 22',
+    },
+    {
+      id: 'sec3-ex8-9',
+      prompt: 'Examples 8 & 9: Evaluate Floor ⌊2.4⌋, ⌊-0.3⌋, ⌊-1.2⌋ and Ceiling ⌈2.4⌉, ⌈-0.3⌉, ⌈-1.2⌉.',
+      steps: [
+        {
+          stepNumber: 1,
+          explanation: 'Floor ⌊x⌋ is greatest integer <= x: ⌊2.4⌋ = 2. For -0.3, greatest integer <= -0.3 is -1. For -1.2, it is -2.',
+          expressionLatex: '\\lfloor 2.4 \\rfloor = 2, \\quad \\lfloor -0.3 \\rfloor = -1, \\quad \\lfloor -1.2 \\rfloor = -2',
+        },
+        {
+          stepNumber: 2,
+          explanation: 'Ceiling ⌈x⌉ is least integer >= x: ⌈2.4⌉ = 3. For -0.3, least integer >= -0.3 is 0. For -1.2, it is -1.',
+          expressionLatex: '\\lceil 2.4 \\rceil = 3, \\quad \\lceil -0.3 \\rceil = 0, \\quad \\lceil -1.2 \\rceil = -1',
+        },
+      ],
+      finalAnswer: 'Floor: 2, -1, -2; Ceiling: 3, 0, -1',
+      finalAnswerLatex: '\\lfloor -1.2 \\rfloor = -2, \\quad \\lceil -1.2 \\rceil = -1',
+      sourceLabel: 'textbook',
+      sourceLocation: 'Section 3, Examples 8 & 9, Page 24',
+    },
+  ],
+  toolIds: ['section3-tools'],
+  commonMistakes: [
+    {
+      mistake: 'Assuming (f ∘ g)(x) and (g ∘ f)(x) always yield the same formula.',
+      correction: 'Function composition is non-commutative: f(g(x)) ≠ g(f(x)) in general.',
+      why: 'Evaluating g first and passing into f processes the mathematics in the reverse operational order.',
+    },
+    {
+      mistake: 'Incorrect floor evaluation on negative decimals: writing ⌊-1.2⌋ = -1.',
+      correction: '⌊-1.2⌋ = -2, because -2 is the largest integer that is LESS THAN or EQUAL to -1.2.',
+      why: 'On the real line, -1 is greater than -1.2 (to the right), so it cannot be the floor.',
+    },
+    {
+      mistake: 'Dividing functions without checking for denominator roots.',
+      correction: 'The domain of f/g is D(f) ∩ D(g) WITH all points where g(x) = 0 removed.',
+      why: 'Division by zero is undefined in real mathematics.',
+    },
+  ],
+  quickCheckIds: ['q3-1', 'q3-2', 'q3-3'],
+  chapterSummary: 'Functions represent single-valued mappings between domain D and range R. The natural domain convention enforces non-zero denominators and non-negative even radicands. Graphs are validated by the Vertical Line Test. Functions combine arithmetically and through composition, feature even/odd symmetry classifications, and extend to step functions ⌊x⌋ and ⌈x⌉.',
+};
